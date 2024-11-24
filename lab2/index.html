@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+    <div class="box">
+        <h1>Stoper</h1>
+        <p id="timer">0s</p>
+        <button type="button" id = "start" class="start">Start</button>
+        <button type="button" id = "stop">Stop</button>
+        <button type="button" id = "reset">Reset</button>
+    </div>
+
+    <div class="box">    
+        <h2>Generator haseł</h2>
+        <label for="min">Minimalna długość hasła</label> <br/>
+        <input type="number" class="input_normal" id = "min" min="0" value = "3" /> <br/>
+        <label for="max">Maksymalna długość hasła</label> <br/>
+        <input type="number" class="input_normal" id = "max" min="1" value = "6"/> <br/>
+        <label for="big_nums">Czy hasło ma zawierać wielkie litery?</label> <br/>
+        <input class="input_check" type="checkbox" id="big_nums"/> <br/>
+        <label for="special">Czy hasło ma zawierać znaki specjalne?</label> <br/>
+        <input class="input_check" type="checkbox" id="special"/> <br/>
+        <button type="submit" id = "submit" class="start">Wygeneruj</button>
+    </div>
+
+    <div class="box">
+
+   
+    <input type="text" id = "filter" class = "input_normal" maxlength="30"/>
+    <select name="cars" id="sorts" class = "input_normal">
+    <option value="asc">rosnąco</option>
+    <option value="desc">malejąco</option>
+    <option value="org" selected>oryginalna kolejność</option>
+    </select>
+    </div>
+    
+    <table id="table" >
+       
+    </table>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
