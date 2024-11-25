@@ -114,6 +114,7 @@ const generatePassword = (min, max, capital, special) => {
 }
 
 let table = document.getElementById("table");
+let sorts = document.getElementById("sorts");
 
 
 let data;
@@ -133,27 +134,22 @@ let f = (obj, text)=>{
 let filter = document.getElementById("filter");
 filter.oninput = () =>{
     let text = filter.value.toLowerCase();
-    let d = data.filter( (obj) => f(obj, text));
+    d = data.filter( (obj) => f(obj, text));
     displayData(d);
 }
 
-let sorts = document.getElementById("sorts");
-sorts.oninput = ()=>{
-    let type = sorts.value;
-    t = d;
-    if(type === "asc"){
-        t = d.sort((e, p)=>{return e.title >= p.title});
-        displayData(t);
-    }else if(type === "desc"){
-        t = d.sort((e, p)=>{return e.title <= p.title});
-        displayData(t);
-    }else{
-        
-    }
+sorts.onchange = () =>{
+    displayData(d);
 }
+
 let displayData = (products) =>{
+    let type = sorts.value;
+    let norm = products;
+    if(type === "asc") norm = products.toSorted((e, p)=>{return e.title >= p.title});
+    if(type === "desc") norm = products.toSorted((e, p)=>{return e.title <= p.title});
+
     table.innerHTML = "";
-    products.forEach(row => {
+    norm.forEach(row => {
         let tr = document.createElement("tr");
         let td1 = document.createElement("td");
         let img = document.createElement("img");
