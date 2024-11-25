@@ -18,6 +18,9 @@ const context = canvas.getContext('2d')
 let width = window.innerWidth;
 let height = window.innerHeight;
 
+var audio = new Audio('./gfx/sad-music.mp3');
+
+
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -90,6 +93,8 @@ function shoot(e){
             hearts = 3;
             score = 5;
             scoreText = score.pad(5);
+            audio.pause();
+            audio.currentTime = 0;
         }else{
             return;
         }
@@ -187,12 +192,16 @@ function draw(){
     drawMouse(context, scale);
 
     if(hearts <= 0 || !play){
+        
+        if(hearts <=0 ){
+            audio.play();
+        }
         play = false;
         zombies = [];
-       context.beginPath();
-       context.rect((1540/2-100)*scale,(963/2-50)*scale, 200*scale, 100*scale);
-       context.fillStyle = 'rgba(245,40,145,0.8)';
-       context.fill();
+        context.beginPath();
+        context.rect((1540/2-100)*scale,(963/2-50)*scale, 200*scale, 100*scale);
+        context.fillStyle = 'rgba(245,40,145,0.8)';
+        context.fill();
 
         context.lineWidth = 2;
         context.strokeStyle = '#000000';
